@@ -1,0 +1,36 @@
+﻿@model CoreAndFood.Data.Models.Food
+@{
+    ViewData["Title"] = "FoodGetir";
+    Layout = "~/Views/Shared/_CoreAndFoodLayout.cshtml";
+}
+
+<link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Update", "Food", FormMethod.Post))
+{
+    <label><b>ID</b></label>
+    @Html.TextBoxFor(x => x.FoodID, new { @class = "form-control" })
+    <br />
+    <label><b>Name</b></label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    <label><b>Description</b></label>
+    @Html.TextAreaFor(x => x.ShortDescription, new { @class = "form-control" })
+    <br />
+    <label><b>Price</b></label>
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+    <br />
+    <label><b>Photo</b></label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+    <label><b>Stock</b></label>
+    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+    <br />
+    <label><b>Stock</b></label>
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-info">Update</button>
+}
+
+

@@ -1,0 +1,32 @@
+﻿@model CoreAndFood.Data.Models.Food
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_CoreAndFoodLayout.cshtml";
+}
+
+<link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+<form class="form-group" method="post">
+
+    <label><b> Name</b></label>
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    <br />
+    <label><b>Price</b></label>
+    @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+    <br />
+    <label><b>Photo</b></label>
+    @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+    <br />
+    <label><b>Stock</b></label>
+    @Html.TextBoxFor(m => m.Stock, new { @class = "form-control" })
+    <br />
+    <label><b>Description</b></label>
+    @Html.TextAreaFor(m => m.ShortDescription, new { @class = "form-control" })
+    <br />
+    <label><b>Category</b></label>
+    @Html.DropDownListFor(m => m.CategoryID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">New Add Food</button>
+
+</form>
+

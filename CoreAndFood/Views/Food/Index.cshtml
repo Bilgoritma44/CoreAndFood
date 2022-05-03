@@ -1,0 +1,49 @@
+﻿@using CoreAndFood.Data.Models
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Food>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CoreAndFoodLayout.cshtml";
+}
+
+<link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+<a href="/Food/Add" class="btn btn-success">New Add Food</a> <a href="/Chart/Index3" class="btn btn-primary" style="margin-left:850px">Chart Food</a>
+
+<table class="table table-bordered" style="margin-top:10px">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Photo</th>
+        <th>Stock</th>
+        <th>Category</th>
+        <th>Delete</th>
+        <th>Update</th>
+        <th>Detail</th>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.FoodID</td>
+            <td>@i.Name</td>
+            <td>@i.ShortDescription</td>
+            <td>@i.Price</td>
+            <td>@i.ImageUrl</td>
+            <td>@i.Stock</td>
+            <td>@i.Category.CategoryName</td>
+            <td><a href="/Food/Delete/@i.FoodID" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Food/FoodGetir/@i.FoodID" class="btn btn-warning">Update</a></td>
+            <td><a href="/Food/Detail/@i.FoodID" class="btn btn-info">Detail</a></td>
+        </tr>
+    }
+
+</table>
+
+<br />
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+

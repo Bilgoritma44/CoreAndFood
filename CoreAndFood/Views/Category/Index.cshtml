@@ -1,0 +1,42 @@
+﻿@using CoreAndFood.Data.Models
+@model List<Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CoreAndFoodLayout.cshtml";
+}
+
+<link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+<a href="/Category/Add" class="btn btn-success">New Add Category</a>
+
+<table class="table table-bordered" style="margin-top:10px">
+    <tr>
+        <th>Category Id</th>
+        <th>Category Name</th>
+        @*<th>Category Description</th>*@
+        <th>Delete</th>
+        <th>Update</th>
+        <th>Detail</th>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.CategoryID</td>
+            <td>@i.CategoryName</td>
+            @*<td>@i.CategoryDescription</td>*@
+            <td><a href="/Category/Delete/@i.CategoryID" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Category/CategoryGetir/@i.CategoryID" class="btn btn-warning">Update</a></td>
+            <td><a href="/Category/Detail/@i.CategoryID" class="btn btn-info">Detail</a></td>
+        </tr>
+    }
+
+</table>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Food Ad:@Html.TextBox("p");
+        <input type="submit" value="Search" />
+    </p>
+}

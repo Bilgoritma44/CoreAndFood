@@ -1,0 +1,24 @@
+﻿@model CoreAndFood.Data.Models.Category
+@{
+    ViewData["Title"] = "CategoryGetir";
+    Layout = "~/Views/Shared/_CoreAndFoodLayout.cshtml";
+}
+
+<link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Update", "Category", FormMethod.Post))
+{
+    <label><b>ID</b></label>
+    @Html.TextBoxFor(m => m.CategoryID, new { @class = "form-control" })
+    <br />
+    <label><b>Name</b></label>
+    @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
+    <br />
+    <label><b>Description</b></label>
+    @Html.TextAreaFor(m => m.CategoryDescription, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Update</button>
+}
+
+
+
